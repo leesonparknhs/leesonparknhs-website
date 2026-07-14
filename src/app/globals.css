@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #006837;
+  --color-primary-dark: #004D28;
+  --color-secondary: #D4AF37;
+  --color-accent: #F59E0B;
+  --color-background-custom: #FCFAF2;
+  --color-surface: #FFFFFF;
+  --color-muted-surface: #F0F4F0;
+  --color-text-main: #0F172A;
+  --color-muted-text: #4B5563;
+  --color-border-custom: #E6EADF;
+
+  --font-sans: var(--font-raleway), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-raleway), system-ui, sans-serif;
+}
+
+/* Base custom resets */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background-custom);
+  color: var(--color-text-main);
+}
+
+/* Premium micro-interactions and utilities */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom focus styling for accessibility */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid #006837;
+  outline-offset: 2px;
+}
