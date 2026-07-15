@@ -58,12 +58,33 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (data: FormData) => {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Appointment Request Submitted:", data);
-    setSubmittedData(data);
-    setIsSubmitted(true);
-    reset();
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${siteContent.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          Name: data.fullName,
+          Phone: data.phone,
+          Email: data.email || "N/A",
+          "Preferred Date": data.preferredDate || "N/A",
+          "Inquiry / Department": data.service || "General Inquiry",
+          Message: data.message,
+        }),
+      });
+      if (response.ok) {
+        setSubmittedData(data);
+        setIsSubmitted(true);
+        reset();
+      } else {
+        alert(`Form submission failed. Please try again or email us directly at: ${siteContent.email}`);
+      }
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      alert(`Submission error. Please try again or email us directly at: ${siteContent.email}`);
+    }
   };
 
   const resetForm = () => {
@@ -90,9 +111,9 @@ export default function ContactForm() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
           
-          {/* Left Column: Contact info cards + embedded map placeholder */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
-            <div className="bg-white p-8 rounded-3xl border border-border-custom border-l-4 border-l-primary shadow-sm space-y-6 flex-1">
+          {/* Left Column: Contact info cards */}
+          <div className="lg:col-span-5 flex flex-col justify-start">
+            <div className="bg-white p-8 rounded-3xl border border-border-custom border-l-4 border-l-primary shadow-sm space-y-6">
               <h3 className="text-xl font-bold font-heading text-text-main pb-4 border-b border-slate-100">
                 Clinic Details
               </h3>
@@ -150,35 +171,6 @@ export default function ContactForm() {
                     <h4 className="text-xs font-extrabold text-muted-text uppercase tracking-wider">Opening Hours</h4>
                     <p className="text-sm font-semibold text-text-main mt-0.5">{siteContent.openingHours}</p>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Embedded Map Placeholder with elegant visuals */}
-            <div className="bg-slate-200 aspect-[16/9] rounded-3xl overflow-hidden shadow-inner border border-border-custom relative flex items-center justify-center">
-              {/* Minimal SVG Grid Pattern mimicking a street map */}
-              <div className="absolute inset-0 opacity-40 pointer-events-none">
-                <svg width="100%" height="100%">
-                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#64748B" strokeWidth="0.5" />
-                  </pattern>
-                  <rect width="100%" height="100%" fill="url(#grid)" />
-                  <line x1="20%" y1="0" x2="20%" y2="100%" stroke="#94A3B8" strokeWidth="3" />
-                  <line x1="0" y1="60%" x2="100%" y2="60%" stroke="#94A3B8" strokeWidth="4" />
-                  <circle cx="20%" cy="60%" r="80" fill="#006837" fillOpacity="0.05" />
-                </svg>
-              </div>
-
-              {/* Clinic Location Marker */}
-              <div className="relative z-10 flex flex-col items-center justify-center space-y-2">
-                <div className="relative">
-                  <span className="absolute inline-flex h-12 w-12 rounded-full bg-primary/30 animate-ping duration-1000 -left-3 -top-3" />
-                  <div className="w-6 h-6 bg-primary border-2 border-white rounded-full flex items-center justify-center shadow-lg relative z-10">
-                    <MapPin className="w-3.5 h-3.5 text-white" />
-                  </div>
-                </div>
-                <div className="bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-md text-[11px] font-bold text-text-main text-center">
-                  <span>Leeson Park Nursing Home</span>
                 </div>
               </div>
             </div>

@@ -7,7 +7,7 @@ export const siteContent = {
   clinicName: "Leeson Park NHI",
   location: "10 Leeson Park, Ranelagh, Dublin 6, D06 TC65, Ireland",
   phone: "+353149765000",
-  email: "careers@leesonparknhi.ie",
+  email: "info@leesonparknhs.com",
   openingHours: "Resident Admissions: 24/7 | Office: Mon-Fri 9:00 AM - 5:00 PM",
   emergencyDisclaimer: "For urgent resident medical questions, please contact our on-duty nursing lead directly. If this is a life-threatening emergency, call 999 or 112 immediately.",
   privacyPolicyNote: "Privacy Note: The details submitted through this form are secure and used solely by our HR and administration team to coordinate applications and inquiries.",

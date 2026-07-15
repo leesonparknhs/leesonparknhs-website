@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ShieldAlert, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { siteContent } from "../data/siteContent";
 import Logo from "./Logo";
 
@@ -176,17 +176,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Emergency footer disclaimer */}
-        <div className="mt-8 p-4 bg-slate-800/40 border border-slate-800 rounded-2xl flex gap-3 items-start max-w-4xl mx-auto">
-          <ShieldAlert className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-          <p className="text-[10px] leading-relaxed">
-            <span className="font-bold text-slate-300">Medical Notice:</span>{" "}
-            Information on this website is of a general educational nature. For
-            personalized medical decisions, consult a healthcare provider. In
-            the event of a medical emergency, call emergency services
-            immediately.
-          </p>
-        </div>
       </div>
     </footer>
   );

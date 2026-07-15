@@ -42,7 +42,6 @@ export default function HomePage() {
                   <p>{home.description2}</p>
                 </div>
 
-                {/* CTAs */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
                   <Link
                     href="/contact"
@@ -50,14 +49,6 @@ export default function HomePage() {
                   >
                     <Calendar className="w-5 h-5" />
                     <span>Inquire About Admissions</span>
-                  </Link>
-
-                  <Link
-                    href="/services"
-                    className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-text-main border border-border-custom px-8 py-3.5 rounded-xl text-base font-semibold shadow-sm transition-all focus-ring"
-                  >
-                    <span>Our Departments</span>
-                    <ArrowRight className="w-4 h-4 text-primary" />
                   </Link>
                 </div>
 
